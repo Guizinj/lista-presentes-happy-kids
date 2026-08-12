@@ -78,7 +78,7 @@ export function createGiftItemCard(item, onOpen, purchaseUrl = null) {
   price.textContent = formattedPrice || "";
   viewPhoto.className = "gift-card-view-photo";
   viewPhoto.type = "button";
-  viewPhoto.textContent = "Ver foto ampliada";
+  viewPhoto.textContent = "Ver foto ampliada ";
   viewPhoto.setAttribute("aria-label", `Ver foto ampliada de ${item.title}`);
 
   photoButton.addEventListener("click", onOpen);

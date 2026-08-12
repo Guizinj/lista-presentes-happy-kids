@@ -51,7 +51,6 @@ function getPurchaseUrl(item) {
   const price = formatPrice(item.price);
 
   if (price) messageParts.push(`Preço: ${price}.`);
-  messageParts.push(`Link da lista: ${window.location.href}`);
 
   return `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(messageParts.join("\n"))}`;
 }
