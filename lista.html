@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Confira a lista de presentes de aniversário da Happy Kids."
+    />
+    <title>Lista de Presentes | Happy Kids</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/public-list.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="./js/pages/public-list.js"></script>
+  </head>
+  <body>
+    <main class="site-shell">
+      <header class="page-intro public-list-header">
+        <p class="eyebrow">Happy Kids</p>
+        <h1 id="list-title">Lista de presentes</h1>
+        <p id="list-event-date">Preparando a lista para você.</p>
+      </header>
+
+      <section id="list-status" class="status-panel" aria-labelledby="list-status-title">
+        <h2 id="list-status-title">Carregando a lista</h2>
+        <p id="public-list-feedback" role="status" aria-live="polite">
+          Aguarde um instante.
+        </p>
+      </section>
+
+      <section id="catalog-section" class="public-catalog" aria-labelledby="catalog-title" hidden>
+        <div class="catalog-heading">
+          <div>
+            <h2 id="catalog-title">Presentes da lista</h2>
+            <p>Veja os detalhes, amplie a foto ou fale com a Happy Kids.</p>
+          </div>
+          <p id="catalog-count" class="catalog-count" aria-live="polite"></p>
+        </div>
+        <ul id="gift-items" class="gift-grid" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <dialog id="gift-gallery" class="gallery-dialog" aria-labelledby="gallery-item-title">
+      <div class="gallery-shell">
+        <button id="gallery-close" class="gallery-close" type="button" aria-label="Fechar galeria">
+          Fechar
+        </button>
+
+        <div id="gallery-media" class="gallery-media">
+          <img id="gallery-image" alt="" />
+          <p id="gallery-image-fallback" class="image-fallback" hidden>
+            Foto indisponível
+          </p>
+        </div>
+
+        <div class="gallery-details">
+          <p id="gallery-position" class="gallery-position" aria-live="polite"></p>
+          <p id="gallery-status" class="status-badge"></p>
+          <h2 id="gallery-item-title"></h2>
+          <p id="gallery-item-price" class="gallery-price" hidden></p>
+          <p id="gallery-item-message" class="gallery-message"></p>
+          <a
+            id="gallery-whatsapp"
+            class="button button-primary gallery-whatsapp"
+            target="_blank"
+            rel="noopener noreferrer"
+            hidden
+          >
+            Quero este presente pelo WhatsApp
+          </a>
+        </div>
+
+        <nav class="gallery-navigation" aria-label="Navegação entre presentes">
+          <button id="gallery-previous" class="button button-secondary" type="button">
+            Anterior
+          </button>
+          <button id="gallery-next" class="button button-secondary" type="button">
+            Próximo
+          </button>
+        </nav>
+      </div>
+    </dialog>
+  </body>
+</html>

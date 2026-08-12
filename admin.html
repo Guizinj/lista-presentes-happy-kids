@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Área de administração das listas de presentes da Happy Kids."
+    />
+    <title>Administração | Happy Kids</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/layout.css" />
+    <link rel="stylesheet" href="./css/components.css" />
+    <link rel="stylesheet" href="./css/admin.css" />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script type="module" src="./js/pages/admin.js"></script>
+  </head>
+  <body>
+    <main class="site-shell">
+      <header class="page-intro admin-header">
+        <p class="eyebrow">Happy Kids</p>
+        <h1>Administração de listas</h1>
+        <p>Crie, atualize e compartilhe listas de presentes.</p>
+      </header>
+
+      <p id="admin-feedback" class="feedback" role="status" aria-live="polite">
+        Carregando administração…
+      </p>
+
+      <section id="login-section" class="admin-panel" aria-labelledby="login-title">
+        <h2 id="login-title">Entrar como vendedora</h2>
+        <p class="panel-description">
+          Use o e-mail e a senha cadastrados no Supabase para gerenciar as listas.
+        </p>
+        <form id="login-form" class="form-stack">
+          <div class="field-group">
+            <label for="login-email">E-mail</label>
+            <input id="login-email" name="email" type="email" autocomplete="email" required />
+          </div>
+          <div class="field-group">
+            <label for="login-password">Senha</label>
+            <input id="login-password" name="password" type="password" autocomplete="current-password" required />
+          </div>
+          <button id="login-submit" class="button button-primary" type="submit">
+            Entrar
+          </button>
+        </form>
+      </section>
+
+      <section id="dashboard-section" class="admin-dashboard" hidden aria-labelledby="dashboard-title">
+        <div class="dashboard-heading">
+          <div>
+            <h2 id="dashboard-title">Listas de aniversário</h2>
+            <p id="seller-email" class="panel-description"></p>
+          </div>
+          <button id="sign-out-button" class="button button-secondary" type="button">
+            Sair
+          </button>
+        </div>
+
+        <section class="admin-panel" aria-labelledby="new-list-title">
+          <h3 id="new-list-title">Criar nova lista</h3>
+          <p class="panel-description">
+            Após criar, você poderá adicionar os brinquedos e compartilhar o link.
+          </p>
+          <form id="new-list-form" class="form-stack">
+            <div class="field-group">
+              <label for="child-name">Nome da criança</label>
+              <input id="child-name" name="childName" type="text" minlength="2" maxlength="100" required />
+            </div>
+            <div class="field-group">
+              <label for="event-date">Data do evento</label>
+              <input id="event-date" name="eventDate" type="date" required />
+            </div>
+            <button id="new-list-submit" class="button button-primary" type="submit">
+              Criar lista
+            </button>
+          </form>
+        </section>
+
+        <section class="admin-panel" aria-labelledby="recent-lists-title">
+          <h3 id="recent-lists-title">Listas recentes</h3>
+          <p id="lists-empty-state" class="panel-description">Carregando listas…</p>
+          <ul id="lists-list" class="list-summary" aria-live="polite"></ul>
+        </section>
+      </section>
+    </main>
+  </body>
+</html>

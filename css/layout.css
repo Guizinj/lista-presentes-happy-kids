@@ -1,0 +1,52 @@
+.site-shell {
+  width: min(100% - 1.5rem, 70rem);
+  margin-inline: auto;
+  padding-block: 1.25rem 3rem;
+}
+
+.page-intro {
+  max-width: 42rem;
+}
+
+.page-intro h1 {
+  margin-block: 0.375rem 0.625rem;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  line-height: 1.04;
+}
+
+.page-intro p:not(.eyebrow) {
+  color: #657188;
+  font-size: 1rem;
+}
+
+.action-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem;
+  margin-top: 1.5rem;
+}
+
+.status-panel {
+  margin-top: 2rem;
+  padding: 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--logo-rosa) 16%, #ffffff);
+  border-radius: 1.25rem;
+  background: rgb(255 255 255 / 88%);
+  box-shadow: 0 12px 30px rgb(85 42 62 / 8%);
+}
+
+.status-panel h2 {
+  font-size: 1.25rem;
+}
+
+.status-panel p {
+  margin-top: 0.375rem;
+  color: #657188;
+}
+
+@media (min-width: 48rem) {
+  .site-shell {
+    width: min(100% - 3rem, 70rem);
+    padding-block: 2.5rem 4rem;
+  }
+}
