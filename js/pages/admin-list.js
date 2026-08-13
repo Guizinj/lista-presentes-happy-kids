@@ -35,9 +35,20 @@ const elements = {
   itemsEmptyState: document.querySelector("#items-empty-state"),
 };
 
-function setFeedback(message, variant = "neutral") {
+let feedbackTimeoutId = null;
+function setFeedback(message, variant = "neutral", duration = 2000) {
+  if (feedbackTimeoutId) {
+    clearTimeout(feedbackTimeoutId);
+  }
   elements.feedback.textContent = message;
   elements.feedback.dataset.variant = variant;
+
+  if (duration > 0) {
+    feedbackTimeoutId = setTimeout(() => {
+      elements.feedback.textContent = "";
+      delete elements.feedback.dataset.variant; 
+    }, duration);
+  }
 }
 
 function setButtonLoading(button, isLoading, loadingLabel) {
