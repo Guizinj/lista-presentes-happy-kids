@@ -51,6 +51,15 @@ textarea {
   font: inherit;
 }
 
+input[type="date"] {
+  width: 100%;
+  display: block;
+  min-height: 45px; /* Define uma altura fixa confortável para toque */
+  -webkit-appearance: none; /* Remove a estilização nativa do Safari/iOS */
+  appearance: none;
+  background-color: #ffffff;
+}
+
 button {
   cursor: pointer;
 }
