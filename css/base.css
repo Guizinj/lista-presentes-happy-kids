@@ -58,6 +58,8 @@ input[type="date"] {
   -webkit-appearance: none; /* Remove a estilização nativa do Safari/iOS */
   appearance: none;
   background-color: #ffffff;
+  line-height: 1.2;
+  padding: 10px 14px;
 }
 
 button {
