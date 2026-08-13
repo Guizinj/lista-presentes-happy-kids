@@ -115,7 +115,7 @@
 
 #list-management .button-secondary {
   border-color: #d3c6cb;
-  background: #fffafd;
+  background: #fffcfc;
   color: var(--logo-laranja)
 }
 
@@ -123,11 +123,10 @@
   border-color: #f1eceb;
   background: rgba(255, 0, 0, 0.671);
   color: white;
-  padding: 20px 0px;
 }
 #list-management .button-danger {
   border-color: #e1dbda;
-  background: rgba(255, 0, 0, 0.658);
+  background: rgba(255, 0, 0, 0.712);
   color: white;
 }
 
