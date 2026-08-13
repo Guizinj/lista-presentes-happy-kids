@@ -2,8 +2,11 @@
 
 ## Etapa atual
 
-A estrutura inicial e o cliente Supabase estão prontos. Ainda não há tabelas,
-autenticação ou dados reais conectados.
+A aplicação está estruturada e possui fluxos de autenticação de vendedoras,
+listas, brinquedos com foto, galeria pública e intenção de compra pelo
+WhatsApp. O funcionamento externo ainda depende de confirmar no projeto real
+do Supabase o schema, o bucket `toys_images`, as políticas RLS e o perfil de
+vendedora.
 
 ## Configurar o Supabase
 

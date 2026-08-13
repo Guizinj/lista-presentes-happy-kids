@@ -36,7 +36,7 @@ const elements = {
 };
 
 let feedbackTimeoutId = null;
-function setFeedback(message, variant = "neutral", duration = 2000) {
+function setFeedback(message, variant = "neutral", duration = 3000) {
   if (feedbackTimeoutId) {
     clearTimeout(feedbackTimeoutId);
   }
