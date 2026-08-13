@@ -210,6 +210,10 @@
 #new-item-form .button-secondary {
   padding: 25px 0px;
 }
+.field-group > #event-date {
+  width: 95%;
+  margin: 0;
+}
 
 .items-panel {
   max-width: 70rem;
