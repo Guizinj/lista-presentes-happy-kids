@@ -5,12 +5,12 @@
 }
 
 .public-list-header .eyebrow {
-  color: var(--logo-rosa);
+  color: var(--logo-laranja);
   font-family: var(--fonte-titulos);
 }
 
 .public-list-header h1 {
-  color: #3e2c35;
+  color: #2b2729;
   font-family: var(--fonte-titulos);
 }
 
@@ -25,9 +25,10 @@
 
 .catalog-heading {
   display: grid;
-  gap: 0.625rem;
+  gap: 1.5rem;
   margin-bottom: 1rem;
   padding-inline: 0.125rem;
+  text-align: center;
 }
 
 .catalog-heading h2 {
@@ -39,13 +40,12 @@
 
 .catalog-heading p {
   margin-top: 0.3rem;
-  color: #6d5962;
+  color: #3d383a;
   font-size: 0.9375rem;
 }
 
 .catalog-count {
   justify-self: start;
-  margin: 0;
   padding: 0.375rem 0.625rem;
   border: 1px solid rgb(36 177 161 / 23%);
   border-radius: 999px;
@@ -74,10 +74,10 @@
   min-width: 0;
   flex-direction: column;
   overflow: hidden;
-  border: 1px solid rgb(215 61 111 / 16%);
+  border: 1px solid rgba(180, 176, 176, 0.349);
   border-radius: 1rem;
   background: #ffffff;
-  box-shadow: 0 8px 20px rgb(215 61 111 / 8%);
+  box-shadow: 1px 2px 10px 1px rgba(10, 10, 10, 0.137);
   transition: box-shadow 180ms ease, transform 180ms ease;
 }
 
@@ -137,30 +137,32 @@
 }
 
 .gift-card-content h3 {
+  text-transform: capitalize;
   display: -webkit-box;
   overflow: hidden;
-  color: #3e2c35;
+  color: #2c282a;
   font-family: var(--fonte-titulos);
   font-size: clamp(0.9375rem, 4vw, 1.125rem);
-  line-height: 1.15;
+  line-height: 1;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
 
 .gift-card-price {
-  color: #a7471f;
+  color: var(--logo-laranja);
   font-family: var(--fonte-titulos);
   font-size: 0.9375rem;
   font-weight: 700;
+  margin-top: -5px;
 }
 
 .gift-card-view-photo {
   justify-self: start;
-  min-height: 2.75rem;
+  min-height: 1.2rem;
   padding: 0.25rem 0;
   border: 0;
   background: transparent;
-  color: #a22d57;
+  color: #353133;
   font-family: var(--fonte-textos);
   font-size: 0.75rem;
   font-weight: 900;
@@ -205,7 +207,7 @@
 
 .status-badge[data-status="sold"] {
   background: rgb(215 61 111 / 12%);
-  color: #9a2850;
+  color: var(--logo-rosa);
 }
 
 .gallery-dialog {
@@ -241,10 +243,10 @@
   justify-self: end;
   min-height: 2.5rem;
   padding: 0.5rem 0.625rem;
-  border: 1px solid rgb(215 61 111 / 18%);
   border-radius: 0.6875rem;
-  background: #fff6f8;
-  color: #a22d57;
+  border: none;
+  background: rgba(255, 0, 0, 0.671);
+  color: white;
   font-family: var(--fonte-titulos);
   font-size: 0.875rem;
   font-weight: 700;
@@ -289,14 +291,16 @@
 }
 
 .gallery-details h2 {
-  color: #3e2c35;
+  color: #2c292b;
   font-family: var(--fonte-titulos);
   font-size: clamp(1.375rem, 6vw, 2rem);
   line-height: 1.12;
+  text-transform: capitalize;
 }
 
 .gallery-price {
-  color: #a7471f;
+  margin-top: -10px;
+  color: var(--logo-laranja);
   font-family: var(--fonte-titulos);
   font-size: 1.125rem;
   font-weight: 700;
@@ -313,6 +317,11 @@
   background: var(--logo-verde);
   color: #173707;
   font-family: var(--fonte-titulos);
+}
+.gallery-whatsapp:hover{
+  border-color: var(--logo-verde);
+  background: var(--logo-verde);
+  color: #173707;
 }
 
 .gallery-navigation {

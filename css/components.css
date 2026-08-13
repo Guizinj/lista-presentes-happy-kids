@@ -5,7 +5,8 @@
   letter-spacing: 0.09em;
   text-transform: uppercase;
   text-align: center;
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   font-family: var(--fonte-titulos);
 }
 
@@ -105,25 +106,7 @@
   border: 1px solid rgb(236, 233, 233);
   padding: 3px 9px;
   border-radius: 10px;
-}
-
-.text-link {
-  display: inline-block;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.2em;
-}
-
-.text-button {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.75rem;
-  padding: 0.5rem 0.25rem;
-  border: 0;
-  background: transparent;
-  text-align: left;
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.2em;
+  font-size: 0.75rem;
 }
 
 .optional-label {

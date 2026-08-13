@@ -51,7 +51,7 @@ export function createPublicGallery({ dialog, getPurchaseUrl }) {
     }
 
     if (purchaseUrl) {
-      elements.message.textContent = "Confirme a disponibilidade e o pagamento com a Happy Kids.";
+      elements.message.textContent = "Confirme a disponibilidade e o pagamento com a Happy Kids Brinquedos.";
       elements.whatsapp.href = purchaseUrl;
       elements.whatsapp.hidden = false;
       return;

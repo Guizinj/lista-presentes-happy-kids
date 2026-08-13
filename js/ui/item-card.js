@@ -91,7 +91,7 @@ export function createGiftItemCard(item, onOpen, purchaseUrl = null) {
     whatsappLink.href = purchaseUrl;
     whatsappLink.target = "_blank";
     whatsappLink.rel = "noopener noreferrer";
-    whatsappLink.textContent = "Quero pelo WhatsApp";
+    whatsappLink.textContent = "Presentear";
     whatsappLink.setAttribute(
       "aria-label",
       `Quero o presente ${item.title} pelo WhatsApp`,

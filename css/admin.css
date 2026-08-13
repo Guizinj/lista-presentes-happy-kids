@@ -85,6 +85,7 @@
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.5rem;
   align-items: center;
+  margin-top: 0;
 }
 
 #list-management .button {
@@ -294,7 +295,7 @@
 
 .status-badge[data-status="sold"] {
   background: #f8e4e1;
-  color: #99463b;
+  color: var(--logo-rosa);
 }
 
 .item-management-actions {
