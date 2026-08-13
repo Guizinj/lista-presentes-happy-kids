@@ -59,7 +59,7 @@ input {
   width: 100%;
   min-height: 3rem;
   padding: 0.6875rem 0.8125rem;
-  border: 1px solid color-mix(in srgb, var(--logo-rosa) 20%, #ffffff);
+  border: 1px solid rgb(219, 215, 215);
   border-radius: 0.875rem;
   background: #ffffff;
   color: #263248;
@@ -68,12 +68,12 @@ input {
 }
 
 input:hover {
-  border-color: color-mix(in srgb, var(--logo-rosa) 42%, #ffffff);
+  border-color: color-mix(in srgb, var(--logo-laranja) 42%, #ffffff);
 }
 
 input:focus {
-  border-color: var(--logo-rosa);
-  box-shadow: 0 0 0 4px color-mix(in srgb, var(--logo-rosa) 16%, transparent);
+  border-color: var(--logo-laranja);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--logo-laranja) 5%, transparent);
   outline: 0;
 }
 

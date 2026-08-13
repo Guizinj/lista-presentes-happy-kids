@@ -1,7 +1,10 @@
 .site-shell {
   width: min(100% - 1.5rem, 70rem);
-  margin-inline: auto;
+  margin: auto;
   padding-block: 1.25rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .page-intro {

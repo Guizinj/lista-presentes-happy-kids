@@ -31,7 +31,7 @@ function setButtonLoading(button, isLoading, loadingLabel) {
 }
 
 function formatDate(date) {
-  return new Intl.DateTimeFormat("pt-BR", { dateStyle: "long" }).format(
+  return new Intl.DateTimeFormat("pt-BR", { dateStyle: "medium" }).format(
     new Date(`${date}T12:00:00`),
   );
 }
@@ -73,7 +73,7 @@ function renderGiftLists(lists) {
     manageLink.href = getAdminListUrl(list.id);
     manageLink.textContent = "Gerenciar";
     publicLink.href = getPublicListUrl(list.public_slug);
-    publicLink.textContent = "Ver pública";
+    publicLink.textContent = "Visualizar";
     publicLink.target = "_blank";
     publicLink.rel = "noopener noreferrer";
 

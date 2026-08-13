@@ -1,9 +1,12 @@
 .eyebrow {
   color: var(--logo-laranja);
-  font-size: 0.75rem;
+  font-size: 0.90rem;
   font-weight: 800;
   letter-spacing: 0.09em;
   text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: var(--fonte-titulos);
 }
 
 .button {
@@ -30,24 +33,20 @@
 }
 
 .button-primary {
-  background: var(--logo-rosa);
+  background: var(--logo-laranja);
   box-shadow: 0 5px 12px color-mix(in srgb, var(--logo-rosa) 24%, transparent);
   color: #ffffff;
 }
 
 .button-primary:hover {
-  background: color-mix(in srgb, var(--logo-rosa) 88%, #9e1d4d);
+  background: color-mix(in srgb, var(--logo-laranja) 88%, #d9d4d6);
 }
 
 .button-secondary {
   border-color: color-mix(in srgb, var(--logo-rosa) 28%, #ffffff);
   background: #ffffff;
-  color: #a72a58;
-}
-
-.button-secondary:hover {
-  border-color: color-mix(in srgb, var(--logo-rosa) 52%, #ffffff);
-  background: color-mix(in srgb, var(--logo-rosa) 7%, #ffffff);
+  color: var(--logo-laranja);
+  padding: 0px 25px;
 }
 
 .button-danger {
@@ -100,8 +99,12 @@
 
 .text-link,
 .text-button {
-  color: #a72a58;
+  color: var(--logo-verde);
   font-weight: 800;
+  text-decoration: none;
+  border: 1px solid rgb(236, 233, 233);
+  padding: 3px 9px;
+  border-radius: 10px;
 }
 
 .text-link {
