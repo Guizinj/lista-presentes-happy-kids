@@ -1,17 +1,17 @@
 .admin-header {
-  padding-bottom: 0.75rem;
+  width: 100%;
+  padding-bottom: 0.5rem;
   text-align: center;
 }
 
-.admin-header h1{
-  white-space: nowrap;
-  font-size: clamp(1.2rem, 1.7rem, 3rem);
-
+.admin-header h1 {
+  font-size: clamp(1.65rem, 7vw, 2.6rem);
+  overflow-wrap: anywhere;
 }
 
 .admin-panel {
   width: 100%;
-  margin-top: 2rem;
+  margin-top: 1.25rem;
   padding: 1.125rem;
   border: 1px solid #f3dce5;
   border-radius: 1.25rem;
@@ -31,16 +31,17 @@
 }
 
 .admin-dashboard {
+  width: 100%;
   margin-top: 1.5rem;
 }
 
 .dashboard-heading {
   display: flex;
-  align-items: start;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 1rem;
-  max-width: 42rem;
-  padding: 0px 10px;
+  width: 100%;
+  padding: 0 0.25rem;
 }
 
 .dashboard-heading h2 {
@@ -62,6 +63,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-width: 0;
   gap: 0.75rem;
   padding: 0.875rem;
   border: 1px solid #f3dce5;
@@ -81,6 +83,7 @@
 
 .list-summary-actions {
   display: grid;
+  flex: 0 0 auto;
   gap: 0.5rem;
   justify-items: end;
   text-align: end;
@@ -388,6 +391,14 @@ body.confirmation-open {
     padding: 1.5rem;
   }
 
+  .admin-header {
+    padding-bottom: 0.75rem;
+  }
+
+  .dashboard-heading {
+    padding-inline: 0.5rem;
+  }
+
   .action-group {
     display: flex;
     flex-wrap: wrap;
@@ -411,7 +422,49 @@ body.confirmation-open {
   }
 }
 
+@media (min-width: 44rem) {
+  .admin-dashboard {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
+
+  .dashboard-heading {
+    grid-column: 1 / -1;
+  }
+
+  .admin-dashboard > .admin-panel {
+    margin-top: 0;
+  }
+
+  .admin-dashboard #new-list-form {
+    max-width: 25rem;
+  }
+}
+
 @media (min-width: 64rem) {
+  .admin-dashboard {
+    grid-template-columns: minmax(19rem, 0.82fr) minmax(0, 1.18fr);
+    gap: 1.75rem;
+  }
+
+  .admin-dashboard > .admin-panel {
+    padding: 1.75rem;
+  }
+
+  .dashboard-heading {
+    padding-inline: 0.75rem;
+  }
+
+  .list-summary {
+    gap: 0.875rem;
+  }
+
+  .list-summary li {
+    padding: 1rem;
+  }
+
   .item-management-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
