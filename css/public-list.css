@@ -32,7 +32,7 @@
 }
 
 .catalog-heading h2 {
-  color: #3e2c35;
+  color: #272426;
   font-family: var(--fonte-titulos);
   font-size: clamp(1.45rem, 6vw, 2rem);
   line-height: 1.1;
