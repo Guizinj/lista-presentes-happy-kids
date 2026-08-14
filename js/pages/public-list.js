@@ -46,13 +46,26 @@ function getPurchaseUrl(item) {
   if (!currentList || item.status !== "available" || !isWhatsAppConfigured()) return null;
 
   const messageParts = [
-    `Olá! Quero comprar o presente “${item.title}” da lista de ${currentList.childName}.`,
+    `Olá!`,
+    `Estou acessando a lista de presentes de ${currentList.childName} e gostaria de comprar o seguinte presente:`,
+    ``,
+    `*Presente:* ${item.title}`,
   ];
+
   const price = formatPrice(item.price);
 
-  if (price) messageParts.push(`Preço: ${price}.`);
+  if (price) {
+    messageParts.push(`*Valor:* ${price}`);
+  }
 
-  return `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(messageParts.join("\n"))}`;
+  messageParts.push(
+    ``,
+    `Pode me ajudar a finalizar a compra, por favor?`
+  );
+
+  return `https://wa.me/${STORE_WHATSAPP_NUMBER}?text=${encodeURIComponent(
+    messageParts.join("\n")
+  )}`;
 }
 
 const gallery = createPublicGallery({
