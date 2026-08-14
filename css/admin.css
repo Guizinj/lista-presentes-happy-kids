@@ -1,6 +1,5 @@
 .admin-header {
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid #f3dce5;
   text-align: center;
 }
 
@@ -131,24 +130,6 @@
   border-color: #e1dbda;
   background: rgba(255, 0, 0, 0.712);
   color: white;
-}
-
-.action-group .button-danger {
-  grid-column: 1 / -1;
-  justify-self: start;
-  padding-inline: 0.25rem;
-  border-color: transparent;
-  background: transparent;
-  text-decoration: underline;
-  text-decoration-color: #e8c0bb;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.22em;
-}
-
-.action-group .button-danger:hover {
-  border-color: transparent;
-  background: transparent;
-  color: #8f382e;
 }
 
 .photo-actions {
