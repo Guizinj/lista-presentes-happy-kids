@@ -358,8 +358,9 @@ body.confirmation-open {
 }
 
 .status-badge[data-status="sold"] {
-  background: #f8e4e1;
-  color: var(--logo-rosa);
+  background-color: color-mix(in srgb, var(--logo-laranja) 12%, transparent);
+  color: var(--logo-laranja);
+  border: 1px solid color-mix(in srgb, var(--logo-laranja) 25%, transparent);
 }
 
 .item-management-actions {

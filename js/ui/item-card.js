@@ -42,22 +42,21 @@ function isValidWhatsAppUrl(value) {
 export function createGiftItemCard(item, onOpen, purchaseUrl = null) {
   const listItem = document.createElement("li");
   const card = document.createElement("article");
-  const photoButton = document.createElement("button");
+  const photoArea = document.createElement("div");
   const image = document.createElement("img");
   const fallback = document.createElement("span");
   const content = document.createElement("div");
   const status = document.createElement("p");
   const title = document.createElement("h3");
   const price = document.createElement("p");
-  const viewPhoto = document.createElement("button");
-  const whatsappLink = document.createElement("a");
 
   listItem.className = "gift-grid-item";
   card.className = "gift-card";
   card.dataset.status = item.status;
-  photoButton.className = "gift-photo-button";
-  photoButton.type = "button";
-  photoButton.setAttribute("aria-label", `Ver foto ampliada de ${item.title}`);
+  card.setAttribute("role", "button");
+  card.tabIndex = 0;
+  card.setAttribute("aria-label", `Ver detalhes de ${item.title}`);
+  photoArea.className = "gift-photo-button";
   image.className = "gift-card-image";
   image.src = item.imageUrl;
   image.alt = `Foto de ${item.title}`;
@@ -70,36 +69,24 @@ export function createGiftItemCard(item, onOpen, purchaseUrl = null) {
   content.className = "gift-card-content";
   status.className = "status-badge";
   status.dataset.status = item.status;
-  status.textContent = item.status === "sold" ? "Comprado" : "Disponível";
+  status.textContent = item.status === "sold" ? "Indisponível" : "Disponível";
   title.textContent = item.title;
   price.className = "gift-card-price";
   const formattedPrice = formatPrice(item.price);
   price.hidden = !formattedPrice;
   price.textContent = formattedPrice || "";
-  viewPhoto.className = "gift-card-view-photo";
-  viewPhoto.type = "button";
-  viewPhoto.textContent = "Ver foto ampliada ";
-  viewPhoto.setAttribute("aria-label", `Ver foto ampliada de ${item.title}`);
 
-  photoButton.addEventListener("click", onOpen);
-  viewPhoto.addEventListener("click", onOpen);
-  photoButton.append(image, fallback);
-  content.append(status, title, price, viewPhoto);
+  card.addEventListener("click", onOpen);
+  card.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
 
-  if (item.status === "available" && isValidWhatsAppUrl(purchaseUrl)) {
-    whatsappLink.className = "gift-card-whatsapp";
-    whatsappLink.href = purchaseUrl;
-    whatsappLink.target = "_blank";
-    whatsappLink.rel = "noopener noreferrer";
-    whatsappLink.textContent = "Presentear";
-    whatsappLink.setAttribute(
-      "aria-label",
-      `Quero o presente ${item.title} pelo WhatsApp`,
-    );
-    content.append(whatsappLink);
-  }
+    event.preventDefault();
+    onOpen();
+  });
+  photoArea.append(image, fallback);
+  content.append(status, title, price);
 
-  card.append(photoButton, content);
+  card.append(photoArea, content);
   listItem.append(card);
 
   return listItem;
