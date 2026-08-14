@@ -289,20 +289,32 @@ body.gallery-open {
 }
 
 .gallery-whatsapp {
-  justify-self: start;
-  min-height: 2.5rem;
-  padding: 0.5rem 0.75rem;
-  margin-top: 0.125rem;
-  border-color: var(--logo-verde);
-  background: var(--logo-verde);
-  color: #173707;
-  font-family: var(--fonte-titulos);
-  font-size: 0.8125rem;
-}
-.gallery-whatsapp:hover{
-  border-color: var(--logo-verde);
-  background: var(--logo-verde);
-  color: #173707;
+    width: 100%;
+    min-height: 3rem;
+    margin-top: 0.5rem;
+    padding: 0.75rem 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border: 1px solid var(--logo-verde);
+    border-radius: 0.75rem;
+    background: var(--logo-verde);
+    color: #ffffff;
+    font-family: var(--fonte-titulos);
+    font-size: 0.9rem;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow:
+        0 0.25rem 0.75rem rgba(0, 0, 0, 0.10),
+        0 0 0 0 rgba(37, 211, 102, 0);
+    animation: whatsapp-pulse 3s ease-out infinite;
+    transition:
+        transform 0.15s ease,
+        filter 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
 .gallery-navigation {
@@ -408,4 +420,95 @@ body.gallery-open {
   .gift-card-image {
     transition: none;
   }
+}
+
+/* Pulse mais evidente e imediato do CTA */
+@keyframes whatsapp-pulse {
+
+    /* Estado inicial */
+    0% {
+        transform: scale(1);
+
+        box-shadow:
+            0 0.25rem 0.75rem rgba(0, 0, 0, 0.10),
+            0 0 0 0 rgba(37, 211, 102, 0.30);
+    }
+
+    /* Primeiro pulso — mais forte */
+    10% {
+        transform: scale(1.035);
+
+        box-shadow:
+            0 0.35rem 1rem rgba(0, 0, 0, 0.12),
+            0 0 0 0.3rem rgba(37, 211, 102, 0.25);
+    }
+
+    22% {
+        transform: scale(1);
+
+        box-shadow:
+            0 0.25rem 0.75rem rgba(0, 0, 0, 0.10),
+            0 0 0 0.65rem rgba(37, 211, 102, 0);
+    }
+
+    /* Segundo pulso */
+    32% {
+        transform: scale(1.025);
+
+        box-shadow:
+            0 0.35rem 0.9rem rgba(0, 0, 0, 0.11),
+            0 0 0 0.25rem rgba(37, 211, 102, 0.20);
+    }
+
+    44% {
+        transform: scale(1);
+
+        box-shadow:
+            0 0.25rem 0.75rem rgba(0, 0, 0, 0.10),
+            0 0 0 0.55rem rgba(37, 211, 102, 0);
+    }
+
+    /* Repouso */
+    55%,
+    100% {
+        transform: scale(1);
+
+        box-shadow:
+            0 0.25rem 0.75rem rgba(0, 0, 0, 0.10),
+            0 0 0 0 rgba(37, 211, 102, 0);
+    }
+}
+
+
+/* Feedback de toque no mobile */
+.gallery-whatsapp:active {
+    animation: none;
+
+    transform: scale(0.98);
+    filter: brightness(0.9);
+
+    box-shadow:
+        0 0.125rem 0.4rem rgba(0, 0, 0, 0.10);
+}
+
+
+/* Hover apenas em dispositivos que realmente possuem hover */
+@media (hover: hover) {
+
+    .gallery-whatsapp:hover {
+        filter: brightness(0.94);
+
+        box-shadow:
+            0 0.35rem 0.9rem rgba(0, 0, 0, 0.12),
+            0 0 0 0.2rem rgba(37, 211, 102, 0.10);
+    }
+}
+
+
+/* Respeita usuários que desativam animações */
+@media (prefers-reduced-motion: reduce) {
+
+    .gallery-whatsapp {
+        animation: none;
+    }
 }

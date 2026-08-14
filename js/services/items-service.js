@@ -24,7 +24,7 @@ export async function getGiftItems(listId) {
     .from("gift_items")
     .select("id, list_id, title, price, image_url, image_path, status, created_at")
     .eq("list_id", listId)
-    .order("created_at", { ascending: true });
+    .order("created_at", { ascending: false });
 
   if (error) throw error;
   return data;
