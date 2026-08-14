@@ -93,13 +93,25 @@
   margin-top: 0.5rem;
 }
 
+#list-management {
+  display: grid;
+  width: 100%;
+  margin-top: 1.25rem;
+}
+
 .action-group {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.5rem;
   align-items: center;
   margin-top: 0;
   padding: 0px 5px;
+}
+
+.action-group .button-delete {
+  grid-column: 3;
+  justify-self: center;
+  padding-inline: 0.75rem;
 }
 
 #list-management .button {
@@ -204,7 +216,8 @@
   margin-top: 0.25rem;
 }
 #new-item-form .button-secondary {
-  padding: 25px 0px;
+  min-height: 3.25rem;
+  padding: 0.75rem 0.5rem;
 }
 
 .items-panel {
@@ -404,6 +417,10 @@ body.confirmation-open {
     flex-wrap: wrap;
   }
 
+  .action-group .button-delete {
+    grid-column: auto;
+  }
+
   .action-group .button-danger {
     margin-left: auto;
   }
@@ -419,6 +436,18 @@ body.confirmation-open {
 
   .item-management-media {
     min-height: 9.5rem;
+  }
+}
+
+@media (min-width: 44rem) {
+  #new-item-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  #new-item-form > .field-group:first-child,
+  #new-item-form > .photo-preview,
+  #new-item-form > .button-primary {
+    grid-column: 1 / -1;
   }
 }
 
@@ -444,6 +473,24 @@ body.confirmation-open {
 }
 
 @media (min-width: 64rem) {
+  #list-management {
+    grid-template-columns: minmax(20rem, 0.78fr) minmax(0, 1.22fr);
+    gap: 1.75rem;
+    align-items: start;
+  }
+
+  #list-management > .action-group {
+    grid-column: 1 / -1;
+  }
+
+  #list-management > .admin-panel {
+    margin-top: 0;
+  }
+
+  #list-management .item-management-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .admin-dashboard {
     grid-template-columns: minmax(19rem, 0.82fr) minmax(0, 1.18fr);
     gap: 1.75rem;
@@ -477,5 +524,9 @@ body.confirmation-open {
 @media (min-width: 90rem) {
   .item-management-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  #list-management .item-management-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
