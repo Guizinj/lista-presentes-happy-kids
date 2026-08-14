@@ -210,6 +210,13 @@
   color: var(--logo-rosa);
 }
 
+body.gallery-open {
+  position: fixed;
+  top: var(--gallery-scroll-offset, 0);
+  width: 100%;
+  overflow: hidden;
+}
+
 .gallery-dialog {
   width: 100%;
   max-width: none;
@@ -241,15 +248,16 @@
 .gallery-close {
   grid-area: close;
   justify-self: end;
-  min-height: 2.5rem;
+  min-height: 1.5rem;
   padding: 0.5rem 0.625rem;
   border-radius: 0.6875rem;
   border: none;
   background: rgba(255, 0, 0, 0.671);
   color: white;
   font-family: var(--fonte-titulos);
-  font-size: 0.875rem;
+  font-size: 0.775rem;
   font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .gallery-media {
@@ -312,11 +320,14 @@
 
 .gallery-whatsapp {
   justify-self: start;
+  min-height: 2.5rem;
+  padding: 0.5rem 0.75rem;
   margin-top: 0.125rem;
   border-color: var(--logo-verde);
   background: var(--logo-verde);
   color: #173707;
   font-family: var(--fonte-titulos);
+  font-size: 0.8125rem;
 }
 .gallery-whatsapp:hover{
   border-color: var(--logo-verde);
@@ -334,13 +345,14 @@
 
 .gallery-navigation .button {
   width: 100%;
-  min-height: 2.625rem;
+  min-height: 3.25rem;
+  padding: 0.75rem;
   border-color: rgb(36 177 161 / 45%);
   border-radius: 0.6875rem;
   background: #ffffff;
   color: #176d63;
   font-family: var(--fonte-titulos);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
 }
 
 .gallery-navigation .button:disabled {

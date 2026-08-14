@@ -118,5 +118,26 @@
         </section>
       </section>
     </main>
+
+    <dialog
+      id="confirmation-dialog"
+      class="confirmation-dialog"
+      aria-labelledby="confirmation-title"
+      aria-describedby="confirmation-message"
+    >
+      <section class="confirmation-dialog-shell">
+        <p class="confirmation-dialog-eyebrow">Confirmação necessária</p>
+        <h2 id="confirmation-title"></h2>
+        <p id="confirmation-message"></p>
+        <div class="confirmation-dialog-actions">
+          <button id="confirmation-cancel" class="button button-secondary" type="button">
+            Cancelar
+          </button>
+          <button id="confirmation-confirm" class="button button-danger" type="button">
+            Confirmar
+          </button>
+        </div>
+      </section>
+    </dialog>
   </body>
 </html>

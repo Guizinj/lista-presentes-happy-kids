@@ -56,6 +56,10 @@ famílias e crianças, sem perder eficiência para a vendedora.
 - Antes de alterar código, banco, estilos, arquivos ou configuração, apresente
   o recorte proposto, sua lógica e impacto, e peça autorização explícita da
   pessoa responsável. Aguarde a autorização antes de executar.
+- Pedidos para adicionar funções, ajustar a interface ou alterar o visual não
+  autorizam mudanças em regras de negócio, banco de dados, Supabase, RLS ou
+  Storage. Preserve-os integralmente, salvo autorização explícita da pessoa
+  responsável para esse escopo.
 - Atualizações deste próprio AGENTS.md solicitadas pela pessoa responsável
   podem ser feitas imediatamente.
 - Após a autorização, explique em linguagem simples quais arquivos participam,

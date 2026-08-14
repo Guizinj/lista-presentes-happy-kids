@@ -18,6 +18,21 @@ export function createPublicGallery({ dialog, getPurchaseUrl }) {
   let items = [];
   let currentIndex = 0;
   let pointerStartX = null;
+  let scrollPosition = 0;
+
+  function lockBackgroundScroll() {
+    scrollPosition = window.scrollY;
+    document.body.style.setProperty("--gallery-scroll-offset", `-${scrollPosition}px`);
+    document.body.classList.add("gallery-open");
+  }
+
+  function unlockBackgroundScroll() {
+    if (!document.body.classList.contains("gallery-open")) return;
+
+    document.body.classList.remove("gallery-open");
+    document.body.style.removeProperty("--gallery-scroll-offset");
+    window.scrollTo(0, scrollPosition);
+  }
 
   function getCurrentItem() {
     return items[currentIndex];
@@ -76,6 +91,7 @@ export function createPublicGallery({ dialog, getPurchaseUrl }) {
   elements.close.addEventListener("click", close);
   elements.previous.addEventListener("click", () => goTo(currentIndex - 1));
   elements.next.addEventListener("click", () => goTo(currentIndex + 1));
+  dialog.addEventListener("close", unlockBackgroundScroll);
 
   elements.image.addEventListener("error", () => {
     const item = getCurrentItem();
@@ -128,7 +144,10 @@ export function createPublicGallery({ dialog, getPurchaseUrl }) {
       currentIndex = index;
       render();
 
-      if (!dialog.open) dialog.showModal();
+      if (!dialog.open) {
+        dialog.showModal();
+        lockBackgroundScroll();
+      }
       window.requestAnimationFrame(() => elements.close.focus());
     },
   };

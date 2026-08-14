@@ -19,17 +19,42 @@ const elements = {
 
 let feedbackTimeoutId = null;
 function setFeedback(message, variant = "neutral", duration = 2000) {
+  const dismissFeedback = () => {
+    if (feedbackTimeoutId) {
+      clearTimeout(feedbackTimeoutId);
+      feedbackTimeoutId = null;
+    }
+
+    delete elements.feedback.dataset.visible;
+
+    window.setTimeout(() => {
+      if (!elements.feedback.dataset.visible) {
+        elements.feedback.replaceChildren();
+        delete elements.feedback.dataset.variant;
+      }
+    }, 180);
+  };
+
   if (feedbackTimeoutId) {
     clearTimeout(feedbackTimeoutId);
   }
-  elements.feedback.textContent = message;
+
+  const feedbackMessage = document.createElement("span");
+  const closeButton = document.createElement("button");
+
+  feedbackMessage.textContent = message;
+  closeButton.type = "button";
+  closeButton.className = "feedback-close";
+  closeButton.setAttribute("aria-label", "Fechar mensagem");
+  closeButton.textContent = "×";
+  closeButton.addEventListener("click", dismissFeedback);
+
+  elements.feedback.replaceChildren(feedbackMessage, closeButton);
   elements.feedback.dataset.variant = variant;
+  elements.feedback.dataset.visible = "true";
 
   if (duration > 0) {
-    feedbackTimeoutId = setTimeout(() => {
-      elements.feedback.textContent = "";
-      delete elements.feedback.dataset.variant; 
-    }, duration);
+    feedbackTimeoutId = window.setTimeout(dismissFeedback, duration);
   }
 }
 

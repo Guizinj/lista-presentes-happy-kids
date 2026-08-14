@@ -33,21 +33,108 @@ const elements = {
   removeSelectedPhoto: document.querySelector("#remove-selected-photo"),
   itemsList: document.querySelector("#items-list"),
   itemsEmptyState: document.querySelector("#items-empty-state"),
+  confirmationDialog: document.querySelector("#confirmation-dialog"),
+  confirmationTitle: document.querySelector("#confirmation-title"),
+  confirmationMessage: document.querySelector("#confirmation-message"),
+  confirmationCancel: document.querySelector("#confirmation-cancel"),
+  confirmationConfirm: document.querySelector("#confirmation-confirm"),
 };
 
 let feedbackTimeoutId = null;
+let confirmationResolver = null;
+let confirmationScrollPosition = 0;
+
+function lockConfirmationBackgroundScroll() {
+  confirmationScrollPosition = window.scrollY;
+  document.body.style.setProperty(
+    "--confirmation-scroll-offset",
+    `-${confirmationScrollPosition}px`,
+  );
+  document.body.classList.add("confirmation-open");
+}
+
+function unlockConfirmationBackgroundScroll() {
+  if (!document.body.classList.contains("confirmation-open")) return;
+
+  document.body.classList.remove("confirmation-open");
+  document.body.style.removeProperty("--confirmation-scroll-offset");
+  window.scrollTo(0, confirmationScrollPosition);
+}
+
+function requestConfirmation({ title, message, confirmLabel }) {
+  elements.confirmationTitle.textContent = title;
+  elements.confirmationMessage.textContent = message;
+  elements.confirmationConfirm.textContent = confirmLabel;
+  elements.confirmationDialog.returnValue = "";
+  elements.confirmationDialog.showModal();
+  lockConfirmationBackgroundScroll();
+  window.requestAnimationFrame(() => elements.confirmationCancel.focus());
+
+  return new Promise((resolve) => {
+    confirmationResolver = resolve;
+  });
+}
+
+elements.confirmationCancel.addEventListener("click", () => {
+  elements.confirmationDialog.close("cancel");
+});
+
+elements.confirmationConfirm.addEventListener("click", () => {
+  elements.confirmationDialog.close("confirm");
+});
+
+elements.confirmationDialog.addEventListener("click", (event) => {
+  if (event.target === elements.confirmationDialog) {
+    elements.confirmationDialog.close("cancel");
+  }
+});
+
+elements.confirmationDialog.addEventListener("close", () => {
+  const isConfirmed = elements.confirmationDialog.returnValue === "confirm";
+  const resolveConfirmation = confirmationResolver;
+
+  confirmationResolver = null;
+  unlockConfirmationBackgroundScroll();
+  resolveConfirmation?.(isConfirmed);
+});
+
 function setFeedback(message, variant = "neutral", duration = 3000) {
+  const dismissFeedback = () => {
+    if (feedbackTimeoutId) {
+      clearTimeout(feedbackTimeoutId);
+      feedbackTimeoutId = null;
+    }
+
+    delete elements.feedback.dataset.visible;
+
+    window.setTimeout(() => {
+      if (!elements.feedback.dataset.visible) {
+        elements.feedback.replaceChildren();
+        delete elements.feedback.dataset.variant;
+      }
+    }, 180);
+  };
+
   if (feedbackTimeoutId) {
     clearTimeout(feedbackTimeoutId);
   }
-  elements.feedback.textContent = message;
+
+  const feedbackMessage = document.createElement("span");
+  const closeButton = document.createElement("button");
+
+  feedbackMessage.textContent = message;
+  closeButton.type = "button";
+  closeButton.className = "feedback-close";
+  closeButton.setAttribute("aria-label", "Fechar mensagem");
+  closeButton.textContent = "×";
+  closeButton.addEventListener("click", dismissFeedback);
+
+  elements.feedback.replaceChildren(feedbackMessage, closeButton);
   elements.feedback.dataset.variant = variant;
+  elements.feedback.dataset.visible = "true";
 
   if (duration > 0) {
-    feedbackTimeoutId = setTimeout(() => {
-      elements.feedback.textContent = "";
-      delete elements.feedback.dataset.variant; 
-    }, duration);
+    feedbackTimeoutId = window.setTimeout(dismissFeedback, duration);
   }
 }
 
@@ -184,9 +271,11 @@ async function toggleItemStatus(item, button) {
 }
 
 async function removeItem(item, button) {
-  const isConfirmed = window.confirm(
-    `Remover “${item.title}” da lista? Essa ação não poderá ser desfeita.`,
-  );
+  const isConfirmed = await requestConfirmation({
+    title: "Remover brinquedo?",
+    message: `Remover “${item.title}” da lista? Essa ação não poderá ser desfeita.`,
+    confirmLabel: "Remover brinquedo",
+  });
 
   if (!isConfirmed) return;
 
@@ -214,9 +303,11 @@ async function removeItem(item, button) {
 }
 
 async function removeList() {
-  const isConfirmed = window.confirm(
-    `Excluir permanentemente a lista de “${currentList.child_name}”, todos os brinquedos e as fotos vinculadas? Essa ação não poderá ser desfeita.`,
-  );
+  const isConfirmed = await requestConfirmation({
+    title: "Excluir lista?",
+    message: `Excluir permanentemente a lista de “${currentList.child_name}”, todos os brinquedos e as fotos vinculadas? Essa ação não poderá ser desfeita.`,
+    confirmLabel: "Excluir lista",
+  });
 
   if (!isConfirmed) return;
 

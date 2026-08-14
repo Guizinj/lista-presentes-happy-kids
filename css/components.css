@@ -62,18 +62,110 @@
 }
 
 .feedback {
-  margin-top: 1.25rem;
+  position: fixed;
+  z-index: 20;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  width: min(23rem, calc(100vw - 2rem));
+  margin: 0;
+  padding: 0.875rem 1rem;
+  border: 1px solid #dfe5ee;
+  border-radius: 0.875rem;
+  background: #ffffff;
+  box-shadow: 0 0.75rem 2rem rgb(46 56 72 / 18%);
   color: #657188;
+  font-family: var(--fonte-textos);
+  font-size: 0.9375rem;
+  font-weight: 800;
+  line-height: 1.35;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(1rem);
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.feedback::before {
+  display: grid;
+  flex: 0 0 auto;
+  width: 1.5rem;
+  aspect-ratio: 1;
+  place-items: center;
+  border-radius: 50%;
+  background: #e8eef8;
+  color: #657188;
+  content: "i";
+  font-family: var(--fonte-titulos);
+  font-size: 1rem;
+}
+
+.feedback[data-visible="true"] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.feedback-close {
+  flex: 0 0 auto;
+  width: 1.75rem;
+  min-height: 1.75rem;
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: currentColor;
+  cursor: pointer;
+  font-family: var(--fonte-textos);
+  font-size: 1.375rem;
+  line-height: 1;
+}
+
+.feedback-close:hover {
+  background: rgb(0 0 0 / 6%);
+}
+
+.feedback-close:focus-visible {
+  outline: 3px solid var(--logo-azul);
+  outline-offset: 2px;
 }
 
 .feedback[data-variant="error"] {
+  border-color: #f0c9ce;
+  background: #fff8f8;
   color: #a12f37;
-  font-weight: 700;
+}
+
+.feedback[data-variant="error"]::before {
+  background: #fbe1e4;
+  color: #a12f37;
+  content: "!";
 }
 
 .feedback[data-variant="success"] {
+  border-color: #c6e5cf;
+  background: #f7fcf8;
   color: #38761d;
-  font-weight: 700;
+}
+
+.feedback[data-variant="success"]::before {
+  background: #dff3e5;
+  color: #38761d;
+  content: "✓";
+}
+
+@media (max-width: 31rem) {
+  .feedback {
+    right: 50%;
+    bottom: 0.875rem;
+    transform: translate(50%, 1rem);
+  }
+
+  .feedback[data-visible="true"] {
+    transform: translate(50%, 0);
+  }
 }
 
 .form-stack {
@@ -106,7 +198,7 @@
   border: 1px solid rgb(236, 233, 233);
   padding: 3px 9px;
   border-radius: 10px;
-  font-size: 0.75rem;
+  font-size: 1rem;
 }
 
 .optional-label {

@@ -23,6 +23,33 @@ políticas de segurança e a primeira vendedora. Em seguida, abriremos
 Se você executou a primeira versão do schema antes da área de brinquedos, rode
 também a migração `supabase/002_add_image_path.sql` no SQL Editor.
 
+## Identidade visual prioritária
+
+Toda cor e tipografia de marca deve usar exclusivamente os tokens definidos no
+`:root` de `css/base.css`. Não altere seus nomes, valores ou famílias sem
+autorização explícita, nem crie outra paleta ou tipografia de marca.
+
+```css
+:root {
+  --logo-rosa: #d73d6f;
+  --logo-laranja: #f66a09;
+  --logo-azul: #24b1a1;
+  --logo-verde: #7CBc42;
+  --fonte-titulos: 'Fredoka', sans-serif;
+  --fonte-textos: 'Nunito', sans-serif;
+}
+```
+
+Use Fredoka em títulos, preços e chamadas de destaque; use Nunito nos demais
+textos da interface.
+
+## Limites de alteração
+
+Pedidos para adicionar funções, ajustar a interface ou mudar o visual não
+autorizam alterações nas regras de negócio, banco de dados, Supabase, RLS ou
+Storage. Esses elementos devem permanecer intactos, salvo autorização explícita
+para esse escopo.
+
 ## Estrutura
 
 - `css/`: estilos globais, de layout, de componentes e específicos de página.
