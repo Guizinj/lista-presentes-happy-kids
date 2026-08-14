@@ -99,8 +99,8 @@ button:disabled {
 }
 
 :focus-visible {
-  outline: 3px solid var(--logo-azul);
-  outline-offset: 3px;
+  outline: 2px solid var(--logo-azul);
+  outline-offset: 1px;
 }
 
 @media (prefers-reduced-motion: reduce) {
