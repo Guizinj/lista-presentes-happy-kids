@@ -136,7 +136,7 @@ async function loadGiftLists() {
 async function showDashboard(session) {
   elements.loginSection.hidden = true;
   elements.dashboard.hidden = false;
-  elements.sellerEmail.textContent = `Conectada como ${session.user.email}.`;
+  elements.sellerEmail.textContent = `👤 ${session.user.email}.`;
   setFeedback("Administração liberada.", "success");
   await loadGiftLists();
 }
