@@ -13,6 +13,9 @@
   background: #ffffff;
   box-shadow: 0 10px 28px rgb(215 61 111 / 8%);
 }
+.admin-panel h2{
+  margin-bottom: 15px;
+}
 
 .admin-panel h2,
 .admin-panel h3 {
