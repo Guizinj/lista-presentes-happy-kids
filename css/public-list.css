@@ -310,7 +310,7 @@ body.gallery-open {
     box-shadow:
         0 0.25rem 0.75rem rgba(0, 0, 0, 0.10),
         0 0 0 0 rgba(37, 211, 102, 0);
-    animation: whatsapp-pulse 3s ease-out infinite;
+    animation: whatsapp-pulse 2.5s ease-out infinite;
     transition:
         transform 0.15s ease,
         filter 0.15s ease,
@@ -425,54 +425,47 @@ body.gallery-open {
 /* Pulse mais evidente e imediato do CTA */
 @keyframes whatsapp-pulse {
 
-    /* Estado inicial */
     0% {
         transform: scale(1);
-
         box-shadow:
             0 0.25rem 0.75rem rgba(0, 0, 0, 0.10),
             0 0 0 0 rgba(37, 211, 102, 0.30);
     }
 
-    /* Primeiro pulso — mais forte */
-    10% {
-        transform: scale(1.035);
-
+    /* Primeiro pulso */
+    12% {
+        transform: scale(1.03);
         box-shadow:
             0 0.35rem 1rem rgba(0, 0, 0, 0.12),
             0 0 0 0.3rem rgba(37, 211, 102, 0.25);
     }
 
-    22% {
+    25% {
         transform: scale(1);
-
         box-shadow:
             0 0.25rem 0.75rem rgba(0, 0, 0, 0.10),
             0 0 0 0.65rem rgba(37, 211, 102, 0);
     }
 
     /* Segundo pulso */
-    32% {
+    42% {
         transform: scale(1.025);
-
         box-shadow:
             0 0.35rem 0.9rem rgba(0, 0, 0, 0.11),
             0 0 0 0.25rem rgba(37, 211, 102, 0.20);
     }
 
-    44% {
+    55% {
         transform: scale(1);
-
         box-shadow:
             0 0.25rem 0.75rem rgba(0, 0, 0, 0.10),
             0 0 0 0.55rem rgba(37, 211, 102, 0);
     }
 
-    /* Repouso */
-    55%,
+    /* Repouso curto */
+    72%,
     100% {
         transform: scale(1);
-
         box-shadow:
             0 0.25rem 0.75rem rgba(0, 0, 0, 0.10),
             0 0 0 0 rgba(37, 211, 102, 0);

@@ -3,6 +3,11 @@
   text-align: center;
 }
 
+.admin-header h1{
+  white-space: nowrap;
+  font-size: clamp(1.2rem, 1.7rem, 3rem);
+
+}
 
 .admin-panel {
   width: 100%;
@@ -82,7 +87,7 @@
 }
 
 .detail-header {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .action-group {
@@ -95,7 +100,7 @@
 }
 
 #list-management .button {
-  min-height: 2.75rem;
+  min-height: 1.75rem;
   padding: 0.625rem 0.875rem;
   border-width: 1px;
   border-radius: 0.875rem;
