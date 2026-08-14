@@ -13,7 +13,7 @@
 
 html {
   color: #263248;
-  background: linear-gradient(180deg, #fff9f5 0%, #ffffff 38rem);
+  background: white;
   font-family: var(--fonte-textos);
   line-height: 1.5;
   text-rendering: optimizeLegibility;
